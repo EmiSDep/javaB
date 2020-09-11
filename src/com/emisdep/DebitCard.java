@@ -1,20 +1,30 @@
 package com.emisdep;
 
+import java.util.*;
+
 public class DebitCard {
+    private String pin;
+    private CheckingAccount primary;
+    //    private Calendar expDate;
+    private String cvv;
+    private String cardOwner;
+    private String cardNum;
+    private List<SavingsAccount> atmAccounts;
 
-    private int cardNumber;
-    private String accountName;
-    private int dob;
-    private int securityCode;
-
-    private CheckingAccount checkingAccount;
-
-    public DebitCard(int cardNumber, String accountName, int balance, int accountNum) {
-        this.checkingAccount = new CheckingAccount();
-//        checkingAccount.balance = balance;
-//        checkingAccount.accountNum = accountNum;
-        this.cardNumber=cardNumber;
-        this.accountName=accountName;
+    public DebitCard(String cardNum, String pin, String cvv, String cardOwner, CheckingAccount primary, List atmAccounts) {
+        this.cardNum = cardNum;
+        this.pin = pin;
+        this.cvv = cvv;
+        this.cardOwner = cardOwner;
+        this.primary = primary;
+        this.atmAccounts = atmAccounts;
     }
 
+    public Boolean charge(int amt, String pin) {
+        if (this.pin == pin && primary.balance >= amt) {
+            primary.balance -= amt;
+            return true;
+        }
+        return false;
+    }
 }

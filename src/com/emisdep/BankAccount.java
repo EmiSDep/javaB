@@ -29,6 +29,3 @@ public class BankAccount {
         return type + " Account, Owner: " + owner + "\tAccount Number: " + accountNum + "\tBalance: " + balance;
     }
 }
-
-/*
- */
