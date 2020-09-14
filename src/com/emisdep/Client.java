@@ -17,10 +17,4 @@ public class Client {
         this.savingsAccounts = new ArrayList<SavingsAccount>();
     }
 
-    public void addAccount(SavingsAccount) {
-        savingsAccounts.add(SavingsAccount);
     }
-
-
-
-}
