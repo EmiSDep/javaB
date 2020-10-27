@@ -1,31 +1,33 @@
 package com.emisdep;
 
 public class BankAccount {
-    private int accountNum;
+    private int balance;
     private String owner;
-    protected int balance;
+    private String accountNum;
     private String type;
 
-    public BankAccount(int accountNum, int balance, String owner, String type) {
-        this.accountNum = accountNum;
+    public BankAccount(int balance, String owner, String accountNum, String type){
         this.balance = balance;
         this.owner = owner;
+        this.accountNum = accountNum;
         this.type = type;
     }
 
     public void deposit(int amt) {
-        balance += amt;
+        if (amt > 0) {
+            balance += amt;
+        }
     }
 
     public void withdraw(int amt) {
-        if (balance >= amt) {
+        if (amt <= balance) {
             balance -= amt;
-            return;
         }
-        return;
     }
 
-    public String getDetails() {
-        return type + " Account, Owner: " + owner + "\tAccount Number: " + accountNum + "\tBalance: " + balance;
+    @Override
+    public String toString() {
+        return "type: " + type + "\tAccountNum: " + accountNum + "\tOwner: " + owner + "\tbalance: " + balance;
     }
+
 }
